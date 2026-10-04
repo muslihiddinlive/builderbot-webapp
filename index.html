@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Bot Constructor</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="top-header">
+      <div class="header-icon">🧱</div>
+      <div>
+        <h1>Bot Constructor</h1>
+        <p class="subtitle">Bloklardan o'z botingizni yig'ing</p>
+      </div>
+    </header>
+
+    <div id="tab-switcher">
+      <button class="tab-btn active" data-tab="constructor">🧱 Yasash</button>
+      <button class="tab-btn" data-tab="mybots">🤖 Mening botlarim</button>
+      <button class="tab-btn" data-tab="admin">🛡 Admin</button>
+    </div>
+
+    <!-- ===== CONSTRUCTOR TAB ===== -->
+    <div id="tab-constructor" class="tab-view">
+      <div id="editing-banner" class="editing-banner" style="display:none">
+        ✏️ Tahrirlash rejimi: <span id="editing-bot-name"></span>
+        <button id="cancel-edit-btn">✕</button>
+      </div>
+
+      <section id="token-section" class="panel">
+        <label>Bot Token <span class="hint">(BotFather'dan)</span></label>
+        <input id="token-input" type="text" placeholder="123456789:AA...">
+      </section>
+
+      <section id="force-join-section" class="panel">
+        <label class="toggle-label">
+          <input type="checkbox" id="force-join-toggle">
+          🔒 Majburiy obuna (force-join)
+        </label>
+        <div id="force-join-fields" style="display:none">
+          <label>Kanal username</label>
+          <input id="force-join-channel" placeholder="@fuiztime">
+          <label>Obuna bo'lmaganlarga matn</label>
+          <input id="force-join-text" placeholder="Botdan foydalanish uchun avval obuna bo'ling:">
+        </div>
+      </section>
+
+      <section id="storage-section" class="panel">
+        <label>💾 Ma'lumotlar guruhi ID <span class="hint">(referral/ommaviy xabar doimiy saqlanishi uchun, ixtiyoriy)</span></label>
+        <input id="storage-chat-id" placeholder="-100123456789">
+        <p class="hint-block">Botingizni shu guruhga admin qilib qo'shing. Bo'sh qoldirsangiz, ma'lumotlar server qayta ishga tushganda o'chib ketadi.</p>
+      </section>
+
+      <section id="blocks-section">
+        <div class="section-head">
+          <h2>Bloklar</h2>
+          <span id="block-count" class="count-badge">0</span>
+        </div>
+
+        <div id="type-picker">
+          <button class="type-btn" data-type="command" style="--accent:#3B82F6">🔵<span>Buyruq</span></button>
+          <button class="type-btn" data-type="text_match" style="--accent:#8B5CF6">🟣<span>Matn</span></button>
+          <button class="type-btn" data-type="button" style="--accent:#10B981">🟢<span>Tugma</span></button>
+          <button class="type-btn" data-type="media" style="--accent:#F59E0B">🟠<span>Media</span></button>
+          <button class="type-btn" data-type="admin_only" style="--accent:#F43F5E">🌸<span>Shart</span></button>
+          <button class="type-btn" data-type="sticker" style="--accent:#06B6D4">🧊<span>Stiker</span></button>
+          <button class="type-btn" data-type="poll" style="--accent:#EAB308">📊<span>So'rov</span></button>
+          <button class="type-btn" data-type="random_reply" style="--accent:#EC4899">🎲<span>Tasodif</span></button>
+          <button class="type-btn" data-type="forward_to_admin" style="--accent:#6366F1">📨<span>Adminga</span></button>
+          <button class="type-btn" data-type="ai_reply" style="--accent:#14B8A6">🧠<span>AI</span></button>
+          <button class="type-btn" data-type="invoice" style="--accent:#F97316">💳<span>Invoice</span></button>
+          <button class="type-btn" data-type="referral" style="--accent:#22C55E">🔗<span>Referral</span></button>
+          <button class="type-btn" data-type="broadcast" style="--accent:#0EA5E9">📢<span>Ommaviy</span></button>
+        </div>
+
+        <div id="blocks-list"></div>
+        <div id="empty-state" class="empty-state">
+          Hali blok yo'q — yuqoridan bir turini tanlang ⬆️
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== MY BOTS TAB ===== -->
+    <div id="tab-mybots" class="tab-view" style="display:none">
+      <div id="mybots-list"></div>
+      <div id="mybots-empty" class="empty-state">Hali bot yaratmagansiz.</div>
+    </div>
+
+    <!-- ===== ADMIN TAB ===== -->
+    <div id="tab-admin" class="tab-view" style="display:none">
+      <div id="admin-content"></div>
+    </div>
+
+    <div id="deploy-bar">
+      <div id="status"></div>
+      <button id="deploy-btn" class="primary">🚀 Botni ishga tushirish</button>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
